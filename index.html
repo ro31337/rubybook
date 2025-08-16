@@ -3,8 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruby Is For Fun - Self-Study Course From Absolute Beginner to Advanced</title>
-    <meta name="description" content="FREE Ruby programming book. Learn to code from home and become a successful freelance developer. 100% human-written, ZERO AI content guaranteed.">
+    <title>Ruby Training & Ruby on Rails Training for Teams | Ruby Is For Fun</title>
+    <meta name="description" content="Enterprise Ruby training and Ruby on Rails training for teams. San Francisco Bay Area based. Fast, practical corporate training. Get your team Ruby-ready in 1-2 days. 100% human instruction.">
+    <meta name="keywords" content="ruby training, ruby on rails training, corporate ruby training, team ruby training, enterprise ruby training, ruby course, rails training, san francisco ruby training, bay area ruby training">
+    <meta name="author" content="Roman Pushkin">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ruby Training & Ruby on Rails Training for Teams">
+    <meta property="og:description" content="Enterprise Ruby and Rails training for teams. Get your developers Ruby-ready fast with hands-on corporate training in San Francisco Bay Area and nationwide.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rubyisforfun.com">
+    <meta property="og:image" content="https://rubyisforfun.com/new_book_image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ruby Training & Ruby on Rails Training for Teams">
+    <meta name="twitter:description" content="Enterprise Ruby and Rails training for teams. Fast, practical corporate training to get your team Ruby-ready.">
+    <meta name="twitter:image" content="https://rubyisforfun.com/new_book_image.jpg">
+    
+    <link rel="canonical" href="https://rubyisforfun.com">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Ruby Is For Fun",
+        "description": "Enterprise Ruby training and Ruby on Rails training for teams and corporations",
+        "url": "https://rubyisforfun.com",
+        "logo": "https://rubyisforfun.com/new_book_image.jpg",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "San Francisco Bay Area",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+        },
+        "telephone": "415-413-6910",
+        "email": "sales@rubyisforfun.com",
+        "areaServed": ["United States", "Europe", "Asia"],
+        "offers": [{
+            "@type": "Offer",
+            "name": "Ruby Pro: Crash Course",
+            "description": "1-2 day intensive corporate Ruby training for teams",
+            "category": "Corporate Training"
+        }]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Ruby Training for Teams",
+        "description": "Enterprise Ruby and Ruby on Rails training designed for development teams. Get your team Ruby-ready fast with hands-on training.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Ruby Is For Fun",
+            "email": "sales@rubyisforfun.com",
+            "telephone": "415-413-6910"
+        },
+        "courseMode": ["onsite", "online"],
+        "educationalLevel": "Beginner to Advanced",
+        "programmingLanguage": "Ruby",
+        "teaches": ["Ruby", "Ruby on Rails", "Web Development", "Object-Oriented Programming"],
+        "duration": "P1-2D"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "Ruby Is For Fun",
+        "author": {
+            "@type": "Person",
+            "name": "Roman Pushkin"
+        },
+        "bookFormat": "EBook",
+        "numberOfPages": "400",
+        "inLanguage": ["en", "ru"],
+        "description": "Self-study Ruby programming course from absolute beginner to advanced",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -235,6 +321,25 @@
             font-weight: 700;
             margin-left: 10px;
             vertical-align: middle;
+        }
+
+        .content-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-badge svg {
+            color: var(--ruby-red);
+            opacity: 0.8;
         }
 
         /* Features */
@@ -640,11 +745,11 @@
     </style>
 </head>
 <body>
-    <header>
+    <header role="banner">
         <div class="container">
             <div class="header-content">
                 <a href="/" class="logo">Ruby Is For Fun</a>
-                <nav class="nav-links">
+                <nav class="nav-links" role="navigation" aria-label="Main navigation">
                     <a href="#book">Get the Book</a>
                     <a href="#about">About</a>
                     <a href="#corporate">Corporate Training</a>
@@ -654,27 +759,35 @@
         </div>
     </header>
 
-    <section class="hero">
+    <main role="main">
+    <section class="hero" aria-labelledby="main-heading">
         <div class="container">
             <div class="badge">📚 FREE DOWNLOAD AVAILABLE</div>
-            <h1>Ruby Is For Fun</h1>
+            <h1 id="main-heading">Ruby Training & Ruby on Rails Training for Teams</h1>
             <p class="subtitle">
-                This self-study course written as a book is your first step towards making money by coding and programming from home, 
-                and doing that with fun. You will understand how the Ruby language works, and establish a foundation for being a 
-                successful freelance developer.
+                Enterprise Ruby training solutions for development teams. From complete beginners to advanced Rails developers, 
+                our corporate training programs get your team production-ready fast. Based in San Francisco, serving teams nationwide.
             </p>
             <div class="guarantee-badge">100% HUMAN-WRITTEN • ZERO AI CONTENT GUARANTEED</div>
         </div>
     </section>
 
-    <section class="book-section" id="book">
+    <section class="book-section" id="book" aria-labelledby="book-heading">
         <div class="container">
             <div class="book-container">
                 <div class="book-image-wrapper">
-                    <img src="new_book_image.jpg" alt="Ruby Is For Fun Book Cover" class="book-image">
+                    <img src="new_book_image.jpg" alt="Ruby training book - Ruby Is For Fun - 400 pages of Ruby and Rails training material" class="book-image" loading="lazy">
                 </div>
                 <div class="book-content">
-                    <h2>Self-Study Course, From Absolute Beginner to Advanced</h2>
+                    <h2 id="book-heading">Self-Study Ruby Course & Team Training Resources</h2>
+                    <div class="content-badge">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z"></path>
+                            <path d="M2 17L12 22L22 17"></path>
+                            <path d="M2 12L12 17L22 12"></path>
+                        </svg>
+                        <span>~400 pages of 100% human-written content</span>
+                    </div>
                     <p>
                         <strong>Hey there!</strong> Feel free to dive into the book without any pressure to pay. 
                         If you end up loving it, you can always choose to buy it later. And just so you know, 
@@ -695,7 +808,7 @@
 
     <section class="features">
         <div class="container">
-            <h2>What You'll Learn</h2>
+            <h2>Ruby Training Topics for Teams</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
@@ -758,12 +871,13 @@
     <section class="corporate" id="corporate">
         <div class="container">
             <div class="corporate-content">
-                <h2>Ruby Pro: Crash Course</h2>
+                <h2>Corporate Ruby on Rails Training - Ruby Pro: Crash Course</h2>
                 <p class="corporate-tagline">"Get Your Team Ruby-Ready: Fast, Practical, Effective."</p>
                 <p>
-                    Equip your team with the essential Ruby skills they need to deliver projects confidently and efficiently. 
-                    The Ruby Pro Course offers focused, hands-on training designed for companies facing new Ruby challenges—100% 
-                    human-taught with no AI content. This intensive 1-2 day corporate training gets your team up to speed quickly.
+                    Our corporate Ruby training and Ruby on Rails training programs equip your development team with essential skills 
+                    to deliver Ruby projects confidently. The Ruby Pro Course offers focused, hands-on Rails training designed for 
+                    companies and teams facing new Ruby challenges—100% human-taught with no AI content. This intensive 1-2 day 
+                    corporate Ruby training gets your team production-ready quickly.
                 </p>
                 
                 <div class="contact-box">
@@ -776,7 +890,8 @@
                             <span>San Francisco Bay Area</span>
                         </div>
                         <p class="location-text">
-                            Based in the beautiful San Francisco Bay Area for over a decade, we deliver enterprise Ruby training with the speed and innovation the Bay Area is known for.
+                            Based in the beautiful San Francisco Bay Area for over a decade, we deliver enterprise Ruby training and Ruby on Rails training 
+                            for teams with the speed and innovation the Bay Area is known for. Specializing in corporate Ruby training since 2014.
                         </p>
                         <div class="service-areas">
                             <div class="service-area immediate">
@@ -870,7 +985,8 @@
         }
     </script>
 
-    <footer>
+    </main>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
