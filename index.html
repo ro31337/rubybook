@@ -1,59 +1,900 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Is For Fun - Self-Study Course From Absolute Beginner to Advanced</title>
+    <meta name="description" content="FREE Ruby programming book. Learn to code from home and become a successful freelance developer. 100% human-written, ZERO AI content guaranteed.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link data-require="bootstrap@*" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
-    <script data-require="bootstrap@*" data-semver="4.0.5" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Ruby Is For Fun - book by Roman Pushkin</title>
-  </head>
+        :root {
+            --ruby-red: #CC342D;
+            --ruby-dark: #991f1a;
+            --ruby-light: #ef4444;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-tertiary: #6b7280;
+            --accent-green: #10b981;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 offset-xs-0 col-md-8 offset-md-2" style="margin-top: 20px">
-          The book is complete and being translated into English.
-          Book is <a href="https://leanpub.com/rubyisforfun">available at LeanPub</a>.
-          Click on the image below to read first chapters:
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--ruby-red);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "💎";
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--ruby-red);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(204, 52, 45, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-green);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--ruby-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.5;
+        }
+
+        /* Book Section */
+        .book-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .book-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .book-image-wrapper {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .book-image {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-xl);
+            transition: transform 0.3s;
+        }
+
+        .book-image:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .book-content h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .book-content p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ruby-red) 0%, var(--ruby-dark) 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(204, 52, 45, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(204, 52, 45, 0.3);
+        }
+
+        .free-badge {
+            background: var(--accent-green);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--ruby-red);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+        }
+
+        .about p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: var(--bg-tertiary);
+            border: 2px solid var(--ruby-red);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+
+        .highlight-box p {
+            color: var(--text-primary);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Corporate Section */
+        .corporate {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(204, 52, 45, 0.05) 0%, rgba(204, 52, 45, 0.02) 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .corporate-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .corporate h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .corporate-tagline {
+            font-size: 24px;
+            color: var(--ruby-red);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .corporate p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px auto 0;
+            max-width: 700px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--border-color);
+        }
+
+        /* Location Section */
+        .location-section {
+            margin-bottom: 30px;
+        }
+
+        .location-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: var(--ruby-red);
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .location-badge svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .location-text {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .service-areas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .service-area {
+            padding: 20px;
+            border-radius: 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .service-area.immediate {
+            border-left: 4px solid var(--accent-green);
+        }
+
+        .service-area.advance {
+            border-left: 4px solid var(--ruby-red);
+        }
+
+        .service-area strong {
+            display: block;
+            color: var(--text-primary);
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .service-area p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .service-note {
+            display: block;
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        .contact-item {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .copy-button, .call-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .copy-button {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .copy-button:hover {
+            background: var(--ruby-red);
+            color: white;
+            border-color: var(--ruby-red);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .copy-button.copied {
+            background: var(--accent-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .call-button {
+            background: var(--ruby-red);
+            color: white;
+            border: 2px solid var(--ruby-red);
+        }
+
+        .call-button:hover {
+            background: var(--ruby-dark);
+            border-color: var(--ruby-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .copy-icon, .call-icon, .check-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-value {
+                font-size: 20px;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+            }
+            
+            .copy-button, .call-button {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .service-areas {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-tertiary);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--ruby-red);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--ruby-red);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .book-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .book-image-wrapper {
+                margin: 0 auto;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Guarantee Badge */
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .guarantee-badge::before {
+            content: "✓";
+            font-size: 18px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">Ruby Is For Fun</a>
+                <nav class="nav-links">
+                    <a href="#book">Get the Book</a>
+                    <a href="#about">About</a>
+                    <a href="#corporate">Corporate Training</a>
+                    <a href="https://github.com/ro31337/rubyisforfun" target="_blank">GitHub</a>
+                </nav>
+            </div>
         </div>
-        <div class="col-md-6 offset-md-3 text-center">
-          <ul class="bk-list">
-            <li>
-              <a href="excerpt.pdf" target="_blank">
-                <div class="bk-book book-1 bk-bookdefault">
-                  <div class="bk-front">
-                    <div class="bk-cover">
-                      <h2><img src="cover.jpg" width="260" height="398"></h2>
-                    </div>
-                    <div class="bk-cover-back"></div>
-                  </div>
-                  <div class="bk-back"></div>
-                  <div class="bk-right"></div>
-                  <div class="bk-left">
-                    <h2><span>Ruby Is For Fun</span></h2>
-                  </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="badge">📚 FREE DOWNLOAD AVAILABLE</div>
+            <h1>Ruby Is For Fun</h1>
+            <p class="subtitle">
+                This self-study course written as a book is your first step towards making money by coding and programming from home, 
+                and doing that with fun. You will understand how the Ruby language works, and establish a foundation for being a 
+                successful freelance developer.
+            </p>
+            <div class="guarantee-badge">100% HUMAN-WRITTEN • ZERO AI CONTENT GUARANTEED</div>
+        </div>
+    </section>
+
+    <section class="book-section" id="book">
+        <div class="container">
+            <div class="book-container">
+                <div class="book-image-wrapper">
+                    <img src="new_book_image.jpg" alt="Ruby Is For Fun Book Cover" class="book-image">
                 </div>
-              </a>
-            </li>
-          </ul>
+                <div class="book-content">
+                    <h2>Self-Study Course, From Absolute Beginner to Advanced</h2>
+                    <p>
+                        <strong>Hey there!</strong> Feel free to dive into the book without any pressure to pay. 
+                        If you end up loving it, you can always choose to buy it later. And just so you know, 
+                        whether you pay or not, I won't have any access to who bought the book. Enjoy reading!
+                    </p>
+                    <p>
+                        This book gives you not only technical detail, but presents knowledge in a friendly format, 
+                        understandable by all ages, providing a thorough explanation of modern concepts for absolute beginners.
+                    </p>
+                    <a href="https://leanpub.com/rubyisforfun" class="cta-button" target="_blank">
+                        Get Your Free Copy Now
+                        <span class="free-badge">FREE</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="col-xs-12 offset-xs-0 col-md-8 offset-md-2">
-          <p>
-            This self-study course written as a book is your first step towards making money by coding and programming from home,
-            and doing that with fun. You will understand how the Ruby language works, and establish a foundation for being
-            successful freelance developer. This book gives you not only technical detail, but presents knowledge in a friendly
-            format, understandable by all ages, providing a thorough explanation of modern concepts for absolute beginners.
-          </p>
-          <p>
-            In this book you will find 78 easy to follow tasks, so even people without any programming skill can solve them.
-            Beginners will learn how to create, debug, and understand programs in Ruby. Those who are already familiar with the
-            language will rediscover object-oriented concepts, memory organization, find career advice, and save the planet from a
-            nuclear apocalypse.
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>
+    </section>
 
+    <section class="features">
+        <div class="container">
+            <h2>What You'll Learn</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>78 Easy Tasks</h3>
+                    <p>Follow easy-to-understand tasks designed so even people without any programming skill can solve them.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💼</div>
+                    <h3>Career Foundation</h3>
+                    <p>Establish a solid foundation for becoming a successful freelance developer and working from home.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>From Zero to Hero</h3>
+                    <p>Learn how to create, debug, and understand programs in Ruby, from absolute beginner to advanced concepts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>Modern Concepts</h3>
+                    <p>Rediscover object-oriented concepts, memory organization, and modern programming patterns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Career Advice</h3>
+                    <p>Find practical career advice and tips for succeeding as a freelance developer in today's market.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Fun Learning</h3>
+                    <p>Learn programming while having fun - and yes, save the planet from a nuclear apocalypse!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>About the Book</h2>
+                <p>
+                    In this book you will find 78 easy to follow tasks, so even people without any programming skill can solve them. 
+                    Beginners will learn how to create, debug, and understand programs in Ruby. Those who are already familiar with the 
+                    language will rediscover object-oriented concepts, memory organization, find career advice, and save the planet from a 
+                    nuclear apocalypse.
+                </p>
+                <div class="highlight-box">
+                    <p>
+                        <strong>📜 License:</strong> Creative Commons Attribution 4.0 International License<br>
+                        <strong>🤝 Contribute:</strong> Contributions are welcome! Typos, rephrases, better explanations, etc. 
+                        The Leanpub-flavored markdown manuscript is available at 
+                        <a href="https://github.com/ro31337/rubyisforfun" target="_blank" style="color: var(--ruby-red);">GitHub repository</a>.<br>
+                        <strong>🌐 Translations:</strong> Русский version available at 
+                        <a href="https://leanpub.com/rubyisforfun_ru" target="_blank" style="color: var(--ruby-red);">Leanpub</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="corporate" id="corporate">
+        <div class="container">
+            <div class="corporate-content">
+                <h2>Ruby Pro: Crash Course</h2>
+                <p class="corporate-tagline">"Get Your Team Ruby-Ready: Fast, Practical, Effective."</p>
+                <p>
+                    Equip your team with the essential Ruby skills they need to deliver projects confidently and efficiently. 
+                    The Ruby Pro Course offers focused, hands-on training designed for companies facing new Ruby challenges—100% 
+                    human-taught with no AI content. This intensive 1-2 day corporate training gets your team up to speed quickly.
+                </p>
+                
+                <div class="contact-box">
+                    <div class="location-section">
+                        <div class="location-badge">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>San Francisco Bay Area</span>
+                        </div>
+                        <p class="location-text">
+                            Based in the beautiful San Francisco Bay Area for over a decade, we deliver enterprise Ruby training with the speed and innovation the Bay Area is known for.
+                        </p>
+                        <div class="service-areas">
+                            <div class="service-area immediate">
+                                <strong>Immediate Service</strong>
+                                <p>San Francisco Bay Area & Continental US<br>
+                                <span class="service-note">Same-week scheduling available</span></p>
+                            </div>
+                            <div class="service-area advance">
+                                <strong>International Service</strong>
+                                <p>Europe, Asia & Other Regions<br>
+                                <span class="service-note">Please contact us 2-3 weeks in advance</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Email Us</div>
+                        <div class="contact-value" id="email">sales@rubyisforfun.com</div>
+                        <div class="contact-buttons">
+                            <button class="copy-button" onclick="copyEmail()">
+                                <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                                <span id="copy-text">Copy Email</span>
+                            </button>
+                            <a href="mailto:sales@rubyisforfun.com" class="copy-button">
+                                <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                Send Email
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Call Now</div>
+                        <div class="contact-value">415-413-6910</div>
+                        <div class="contact-buttons">
+                            <a href="tel:415-413-6910" class="call-button">
+                                <svg class="call-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                Call Now
+                            </a>
+                            <button class="copy-button" onclick="copyPhone()">
+                                <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                                <span id="copy-phone-text">Copy Number</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function copyEmail() {
+            const email = document.getElementById('email').textContent;
+            navigator.clipboard.writeText(email).then(function() {
+                const button = event.currentTarget;
+                const textSpan = document.getElementById('copy-text');
+                button.classList.add('copied');
+                textSpan.textContent = 'Copied!';
+                
+                setTimeout(function() {
+                    button.classList.remove('copied');
+                    textSpan.textContent = 'Copy Email';
+                }, 2000);
+            });
+        }
+
+        function copyPhone() {
+            const phone = '415-413-6910';
+            navigator.clipboard.writeText(phone).then(function() {
+                const button = event.currentTarget;
+                const textSpan = document.getElementById('copy-phone-text');
+                button.classList.add('copied');
+                textSpan.textContent = 'Copied!';
+                
+                setTimeout(function() {
+                    button.classList.remove('copied');
+                    textSpan.textContent = 'Copy Number';
+                }, 2000);
+            });
+        }
+    </script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ruby Is For Fun</h3>
+                    <p>A self-study course written as a book to help you become a successful Ruby developer.</p>
+                    <p>100% human-written content, guaranteed zero AI generation.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="https://leanpub.com/rubyisforfun" target="_blank">Get the Book (Free)</a><br>
+                    <a href="https://github.com/ro31337/rubyisforfun" target="_blank">GitHub Repository</a><br>
+                    <a href="https://leanpub.com/rubyisforfun_ru" target="_blank">Russian Translation</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#corporate">Corporate Training</a><br>
+                    <a href="#about">About the Book</a><br>
+                    <a href="https://github.com/ro31337/rubyisforfun" target="_blank">Contribute</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Ruby Is For Fun by Roman Pushkin. Licensed under CC BY 4.0</p>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
